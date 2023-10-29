@@ -6,14 +6,21 @@ def CreateSaveFile(path):
     sort_paths = []
     open(path,"x")
     sort_paths = EditArray(sort_paths,'Add_paths','Add path you want to sort like: C:\\Users\\user\\Downloads')
+    sort_paths = CheckValidPath(sort_paths)
 
+def CheckValidPath(paths):
+    valid_paths = []
+    for x in paths:
+        if os.path.exists(x):
+            valid_paths.append(x)
+    return valid_paths
 def Save(path,Data):
     pass
 def EditArray(array,title='List_Menu',info=''):
     while True:
         print(f'{info}\n__{title}__\n1)Add Element\n2)Remove Element\n3)Save')
         selection = input('select: ')
-
+        #Check options
         if selection == '1':
             print('Add Element:')
             selection = input('Element name: ')
