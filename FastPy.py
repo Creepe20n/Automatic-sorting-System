@@ -5,9 +5,15 @@ def Load(path):
 def CreateSaveFile(path):
     base_file_format = ['pdf','png','exe']
     sort_paths = []
+    #load data into paths
     open(path,"x")
     sort_paths = EditArray(sort_paths,'Add_paths','Add path you want to sort like: C:\\Users\\user\\Downloads')
     sort_paths = CheckValidPath(sort_paths)
+    #Create data list for saving
+    data = []
+    data.extend(sort_paths)
+    data.extend(base_file_format)
+    Save(path,data)
 
 def CheckValidPath(paths):
     valid_paths = []
@@ -15,8 +21,12 @@ def CheckValidPath(paths):
         if os.path.exists(x):
             valid_paths.append(x)
     return valid_paths
+
 def Save(path,Data):
-    pass
+    TempFile = open(path,'w')
+    for x in Data:
+        TempFile.write(str(x)+'\n')
+    print('Test 1 passed!')
 def EditArray(array,title='List_Menu',info=''):
     while True:
         print(f'{info}\n__{title}__\n1)Add Element\n2)Remove Element\n3)Save')
