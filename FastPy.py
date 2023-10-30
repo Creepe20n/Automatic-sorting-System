@@ -1,7 +1,12 @@
 import os
 import tkinter as tk
 def Load(path):
-    pass
+    data = []
+    for x in open(path,'r'):
+        x = x.replace('\n','')
+        if x != '':
+            data.append(x)
+    return data
 def CreateSaveFile(path):
     base_file_format = []
     sort_paths = []
