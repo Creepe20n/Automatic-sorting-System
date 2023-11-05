@@ -1,6 +1,6 @@
 import os
 import FastPy as FP
-
+import ComandMenuBuilder as CMB
 class MainProgram:
     def __init__(self):
         #Path
@@ -22,9 +22,8 @@ class MainProgram:
                 continue
             self.SortPath.append(x)
 
-    def MainMenu():
+    def MainMenu(self):
         pass
-
     def MainLoop(self):
         self.StartupCheck()
         while True:
