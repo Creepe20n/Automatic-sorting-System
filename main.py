@@ -16,20 +16,22 @@ class MainProgram:
             FP.CreateSaveFile(self.savefile_path)
         #Load Data and sort it in Array
         data = FP.Load(self.savefile_path)
-
         for x in data:
             if not os.path.exists(x):
                 self.file_extension.append(x)
                 continue
             self.SortPath.append(x)
 
-
+    def MainMenu():
+        pass
 
     def MainLoop(self):
         self.StartupCheck()
-
-
-
+        while True:
+            try:
+                self.MainMenu()
+            except Exception as e:
+                print(e)
 
 if __name__ == '__main__':
     MP = MainProgram()

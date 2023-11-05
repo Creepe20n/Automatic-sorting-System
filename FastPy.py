@@ -1,5 +1,5 @@
 import os
-import tkinter as tk
+#import tkinter as tk
 def Load(path):
     data = []
     for x in open(path,'r'):
