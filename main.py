@@ -23,7 +23,11 @@ class MainProgram:
             self.SortPath.append(x)
 
     def MainMenu(self):
-        pass
+        A1 = CMB.EditArray(array = self.SortPath,title="SortPath",info="Path")
+        A2 = CMB.EditArray(array=self.file_extension,title="ex",info="ext")
+        Opt = [A1,A2]
+        Menu = CMB.Menu(Opt)
+        Menu.MainLoop()
     def MainLoop(self):
         self.StartupCheck()
         while True:

@@ -76,3 +76,20 @@ def AvoidDoubleElements(array,element):
             return array
     array.append(element)
     return array
+def SelectArrayElement(array,has_title = False):
+    i = 1
+    for x in array:
+        if not has_title:
+            print(f'{i}){x}')
+        else:
+            print(f'{i}){x.title}')
+        i+=1
+    selection = input('Select Element: ')
+    if not selection.isnumeric():
+        print("Error, wrong input")
+        return -1
+    selection = int(selection)-1
+    if selection < 0 or selection > len(array):
+        print("Error, Input to high or to low")
+        return -1
+    return selection

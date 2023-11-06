@@ -1,10 +1,17 @@
 import FastPy as FP
 class Menu:
     def __init__(self,Options):
-        self.edit_array = []
+        self.Options = Options
     def MainLoop(self):
+        Space()
         while True:
-            pass
+            selection = FP.SelectArrayElement(self.Options,True)
+            # Check for Error
+            if selection < 0:
+                return
+            #Finish Task
+            Space()
+            self.Options[selection].Menu()
 
 class EditArray:
     def __init__(self,title,info,array):
@@ -14,20 +21,13 @@ class EditArray:
     def AddArrayElement(self):
         print(self.info)
         selection = input('Type Element: ')
-        self.array.append(selection)
+        self.array = FP.AvoidDoubleElements(self.array,selection)
     def RemoveArrayElement(self):
-        i = 1
-        for x in self.array:
-            print(str(i)+')'+str(x))
-            i+=1
-        selection = input('Select Element: ')
-        if not selection.isnumeric():
-            print("Error, wrong input")
+        selection = FP.SelectArrayElement(self.array)
+        #Check for Error
+        if selection < 0:
             return
-        selection = int(selection)-1
-        if selection < 0 or selection > len(self.array):
-            print("Error, Input to high or to low")
-            return
+        #Finish Task
         Space()
         self.array = FP.RemoveArrayElement(self.array,self.array[selection])
     def Menu(self):
