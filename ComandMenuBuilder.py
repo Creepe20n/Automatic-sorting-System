@@ -5,7 +5,7 @@ class Menu:
     def MainLoop(self):
         Space()
         while True:
-            selection = FP.SelectArrayElement(self.Options,True)
+            selection = EditArray.SelectArrayElement(self.Options,True)
             # Check for Error
             if selection < 0:
                 return
@@ -23,7 +23,7 @@ class EditArray:
         selection = input('Type Element: ')
         self.array = FP.AvoidDoubleElements(self.array,selection)
     def RemoveArrayElement(self):
-        selection = FP.SelectArrayElement(self.array)
+        selection = self.SelectArrayElement(self.array)
         #Check for Error
         if selection < 0:
             return
@@ -42,6 +42,25 @@ class EditArray:
                 self.RemoveArrayElement()
             elif selection == '3':
                 return self.array
+    def SelectArrayElement(array, has_title=False):
+        # Visualize array
+        i = 1
+        for x in array:
+            if not has_title:
+                print(f'{i}){x}')
+            else:
+                print(f'{i}){x.title}')
+            i += 1
+        selection = input('Select Element: ')
+        # Check if input is valid
+        if not selection.isnumeric():
+            print("Error, wrong input")
+            return -1
+        selection = int(selection) - 1
+        if selection < 0 or selection > len(array):
+            print("Error, Input to high or to low")
+            return -1
+        return selection
 
 
 def Space(lines=20):
