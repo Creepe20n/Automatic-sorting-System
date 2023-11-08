@@ -32,6 +32,9 @@ def CheckValidPath(paths):
         if os.path.exists(x):
             valid_paths.append(x)
     return valid_paths
+def GetFilesInFolder(path):
+    Files = os.listdir(path)
+    return Files
 #Array Management
 def RemoveArrayElement(array,element):
     new_array = []

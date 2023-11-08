@@ -24,9 +24,9 @@ class MainProgram:
 
     def MainMenu(self):
         A1 = CMB.EditArray(array = self.SortPath,title="SortPath",info="Path")
-        A2 = CMB.EditArray(array=self.file_extension,title="ex",info="ext")
+        A2 = CMB.MethodOption(title ="method",method= lambda:i("d"))
         Opt = [A1,A2]
-        Menu = CMB.Menu(Opt)
+        Menu = CMB.Menu(Opt,exit_opt=False)
         Menu.MainLoop()
     def MainLoop(self):
         self.StartupCheck()
@@ -35,6 +35,12 @@ class MainProgram:
                 self.MainMenu()
             except Exception as e:
                 print(e)
+def i(d):
+    print(d)
+    A1 = CMB.EditArray(array =[],title="SortPath",info="Path")
+    Opt = [A1]
+    Menu = CMB.Menu(Opt,title="i")
+    Menu.MainLoop()
 
 if __name__ == '__main__':
     MP = MainProgram()

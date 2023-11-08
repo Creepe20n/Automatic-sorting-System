@@ -1,20 +1,38 @@
 import FastPy as FP
 class Menu:
-    def __init__(self,Options):
-        self.Options = Options
+    def __init__(self,options,exit_opt = True,title = '_Menu_'):
+        self.Options = options
+        self.title = title
+        self.exit_opt = exit_opt
+        self.kill_menu = False
     def MainLoop(self):
+        if self.exit_opt:
+            opt = MethodOption('exit',self.exit)
+            self.Options.append(opt)
         Space()
         while True:
+            if self.kill_menu:
+                break
+            print(self.title)
             selection = SelectArrayElement(self.Options,True)
             # Check for Error
             if selection < 0:
-                return
+                continue
             #Finish Task
             Space()
             self.Options[selection].Menu()
+    def exit(self):
+        self.kill_menu = True
+
+class MethodOption:
+    def __init__(self,method,title = "_Method_Menu_"):
+        self.title = title
+        self.method = method
+    def Menu(self):
+        self.method()
 
 class EditArray:
-    def __init__(self,title,info,array):
+    def __init__(self,info,array,title = "_Array_Menu_"):
         self.title = title
         self.info = info
         self.array = array
@@ -42,6 +60,7 @@ class EditArray:
                 self.RemoveArrayElement()
             elif selection == '3':
                 return self.array
+
 def SelectArrayElement(array, has_title=False):
      # Visualize array
     i = 1
@@ -61,7 +80,6 @@ def SelectArrayElement(array, has_title=False):
         print("Error, Input to high or to low")
         return -1
     return selection
-
 
 def Space(lines=20):
     while lines > 0:
