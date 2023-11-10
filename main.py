@@ -26,7 +26,7 @@ class MainProgram:
         A1 = CMB.EditArray(array = self.SortPath,title="SortPath",info="Path")
         A2 = CMB.MethodOption(title ="method",method= lambda:i("d"))
         Opt = [A1,A2]
-        Menu = CMB.Menu(Opt,exit_opt=False)
+        Menu = CMB.Menu(Opt,exit_opt=True)
         Menu.MainLoop()
     def MainLoop(self):
         self.StartupCheck()

@@ -7,7 +7,7 @@ class Menu:
         self.kill_menu = False
     def MainLoop(self):
         if self.exit_opt:
-            opt = MethodOption('exit',self.exit)
+            opt = MethodOption(title='exit',method=self.exit)
             self.Options.append(opt)
         Space()
         while True:
