@@ -6,13 +6,17 @@ class Menu:
         self.exit_opt = exit_opt
         self.kill_menu = False
     def MainLoop(self):
+        #Create Exit option
         if self.exit_opt:
             opt = MethodOption(title='exit',method=self.exit)
             self.Options.append(opt)
         Space()
+        #Run the actual Menu
         while True:
+            #Check for exit
             if self.kill_menu:
                 break
+            #Build Selection menu
             print(self.title)
             selection = SelectArrayElement(self.Options,True)
             # Check for Error
